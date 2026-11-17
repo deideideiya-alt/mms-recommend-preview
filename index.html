@@ -466,8 +466,8 @@ tbody tr:hover { background: #fafcff; }
               </div>
               <div class="form-item">
                 <span class="lbl">推荐条数</span>
-                <input class="ctrl" id="pCount" value="8 条" readonly aria-readonly="true" style="background:#f5f6f8;color:var(--text-2);cursor:default">
-                <span class="hint">由系统固定返回 Top 8 条，不可修改</span>
+                <input class="ctrl" id="pCount" value="最多 15 条" readonly aria-readonly="true" style="background:#f5f6f8;color:var(--text-2);cursor:default">
+                <span class="hint">系统固定返回，最多 15 条，不可修改</span>
               </div>
               <div class="form-section-title">用户信息（dnum / userid 二选一）</div>
               <div class="form-item">
@@ -569,7 +569,12 @@ const SEASON_POOL = [
   { title: 'Slime Una Aventura Pajegosa', id: 'VideoID:6b91365813ec703761fa5d2', score: 84.9, reason: '地域热门' },
   { title: 'El Poder de la Fe', id: 'VideoID:6b91365813ec703761fa5d1', score: 83.1, reason: '高分内容' },
   { title: 'Espionaje en Londres', id: 'VideoID:6b91365813ec703761fa5d0', score: 81.6, reason: '相似用户偏好' },
-  { title: 'Más Allá del Tiempo', id: 'VideoID:6b91365813ec703761fa5cf', score: 79.4, reason: '科幻题材' }
+  { title: 'Más Allá del Tiempo', id: 'VideoID:6b91365813ec703761fa5cf', score: 79.4, reason: '科幻题材' },
+  { title: 'Film Plus Romance TV', id: 'VideoID:6a8d379621bcc058c41cebbc', score: 77.8, reason: '地域热门' },
+  { title: 'Film Plus Kids TV', id: 'VideoID:6a8d379621bcc058c41cebbb', score: 76.2, reason: '家庭剧场' },
+  { title: 'La Última Frontera', id: 'VideoID:6b91365813ec703761fa5ce', score: 74.5, reason: '高分内容' },
+  { title: 'Sueños de Verano', id: 'VideoID:6b91365813ec703761fa5cd', score: 72.9, reason: '相似用户偏好' },
+  { title: 'Camino de Héroes', id: 'VideoID:6b91365813ec703761fa5cc', score: 71.3, reason: '编辑精选' }
 ];
 const EPISODE_POOL = [
   { title: 'Film Plus Emotion TV · S02E05', id: 'VideoID:6a8d379621bcc058c41cebb6', score: 97.2, reason: '续播引导' },
@@ -581,7 +586,12 @@ const EPISODE_POOL = [
   { title: 'Film Plus Family TV · S04E02', id: 'VideoID:6a8d379621bcc058c41cebb4', score: 86.4, reason: '家庭剧场' },
   { title: 'Más Allá del Tiempo · S02E09', id: 'VideoID:6b91365813ec703761fa5cf', score: 84.7, reason: '高分内容' },
   { title: 'Film Plus Shorts TV · E11', id: 'VideoID:6a8d379621bcc058c41cebb0', score: 82.3, reason: '短视频' },
-  { title: 'Film Plus TV · S01E07', id: 'VideoID:6a8d379621bcc058c41cebae', score: 80.1, reason: '经典常青' }
+  { title: 'Film Plus TV · S01E07', id: 'VideoID:6a8d379621bcc058c41cebae', score: 80.1, reason: '经典常青' },
+  { title: 'Film Plus Romance TV · S01E03', id: 'VideoID:6a8d379621bcc058c41cebbc', score: 78.5, reason: '续播引导' },
+  { title: 'Film Plus Kids TV · S02E08', id: 'VideoID:6a8d379621bcc058c41cebbb', score: 76.9, reason: '家庭剧场' },
+  { title: 'La Última Frontera · S01E05', id: 'VideoID:6b91365813ec703761fa5ce', score: 75.2, reason: '剧情连贯' },
+  { title: 'Sueños de Verano · T02E04', id: 'VideoID:6b91365813ec703761fa5cd', score: 73.6, reason: '高分单集' },
+  { title: 'Camino de Héroes · S03E06', id: 'VideoID:6b91365813ec703761fa5cc', score: 72.0, reason: '热度飙升' }
 ];
 const FALLBACK_POOL = [
   { title: 'Film Plus Emotion TV', id: 'VideoID:6a8d379621bcc058c41cebb6', score: 88.0, reason: 'MMS兜底-全局热门' },
@@ -593,7 +603,12 @@ const FALLBACK_POOL = [
   { title: 'Film Plus Shorts TV', id: 'VideoID:6a8d379621bcc058c41cebb0', score: 76.8, reason: 'MMS兜底-全局热门' },
   { title: 'Más Allá del Tiempo', id: 'VideoID:6b91365813ec703761fa5cf', score: 75.1, reason: 'MMS兜底-上新' },
   { title: 'Slime Una Aventura Pajegosa', id: 'VideoID:6b91365813ec703761fa5d2', score: 73.6, reason: 'MMS兜底-品类兜底' },
-  { title: 'Film Plus TV', id: 'VideoID:6a8d379621bcc058c41cebae', score: 72.0, reason: 'MMS兜底-编辑精选' }
+  { title: 'Film Plus TV', id: 'VideoID:6a8d379621bcc058c41cebae', score: 72.0, reason: 'MMS兜底-编辑精选' },
+  { title: 'Film Plus Romance TV', id: 'VideoID:6a8d379621bcc058c41cebbc', score: 70.4, reason: 'MMS兜底-全局热门' },
+  { title: 'Film Plus Kids TV', id: 'VideoID:6a8d379621bcc058c41cebbb', score: 68.8, reason: 'MMS兜底-品类兜底' },
+  { title: 'La Última Frontera', id: 'VideoID:6b91365813ec703761fa5ce', score: 67.1, reason: 'MMS兜底-编辑精选' },
+  { title: 'Sueños de Verano', id: 'VideoID:6b91365813ec703761fa5cd', score: 65.5, reason: 'MMS兜底-上新' },
+  { title: 'Camino de Héroes', id: 'VideoID:6b91365813ec703761fa5cc', score: 63.9, reason: 'MMS兜底-全局热门' }
 ];
 const COVER_COLORS = [
   ['#5b6ef5','#8f7cf7'],['#f56565','#f6a45c'],['#20a4a8','#5ed0c0'],['#7b5ef5','#b07cf5'],
@@ -705,7 +720,7 @@ function doPreview() {
   const uid = $('#pUserId').value.trim();
   const uidType = $('input[name="uidType"]:checked').value;
   const level = $('#pLevel').value;
-  const count = 8; // 系统固定返回 Top 8 条，不可选择
+  const count = 15; // 系统固定返回，最多 15 条，不可选择
   if (!mediaId) { toast('请输入媒资ID'); $('#pMediaId').focus(); return; }
   if (!countryCode) { toast('请选择国家/地区'); $('#pCountry').focus(); return; }
   if (!uid) { toast(`请输入 ${uidType}`); $('#pUserId').focus(); return; }
@@ -752,7 +767,7 @@ $('#btnPreviewReset').addEventListener('click', () => {
   $('#pMediaId').value = '';
   $('#pLevel').value = 'season';
   $('#pCountry').value = '';
-  $('#pCount').value = '8 条';
+  $('#pCount').value = '最多 15 条';
   $('#pUserId').value = '';
   $('input[name="uidType"][value="dnum"]').checked = true;
   $('#resultCard').classList.remove('show');
